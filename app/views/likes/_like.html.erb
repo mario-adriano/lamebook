@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "like-dislike-#{post.id}" do %>
+  <% unless current_user.nil? %>
+    <% unless Like.find_by(user_id: current_user, post_id: post.id) %>
+      <%= link_to "Like", likes_path(@post, 'like[post_id]': post.id), data: { 'turbo-method' => :post, turbo_frame: "like-dislike-#{post.id}" }, class: "preach-btn" %>
+    <% else %>
+      <%= link_to "Dislike", like_path(post), data: { 'turbo-method' => :delete }, class: "preached-btn" %>
+    <% end %>
+  <% end %>
+  <%= like_count %>
+<% end %>

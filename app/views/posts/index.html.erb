@@ -1,2 +1,16 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<div id="posts">
+  <% @posts.each do |post| %>
+    <p>
+      <strong>Content:</strong>
+      <%= post.content %>
+    </p>
+
+    <p>
+      <strong>User:</strong>
+      <%= post.user.username %>
+    </p>
+    <%= render 'likes/like', post: post, like_count: Like.size_likes_post(post) %>
+  <% end %>
+
+  <%= will_paginate @posts %>
+</div>

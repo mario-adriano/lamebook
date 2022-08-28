@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  root "posts#index"
+
   devise_for :users
+
   get 'posts/index'
   get 'posts/new'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  root "posts#index"
+  
+  resources :likes, only: %i[create destroy]
 end
