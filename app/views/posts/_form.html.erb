@@ -1,0 +1,7 @@
+<%= form_for(@post, :as => :post, :url => posts_create_path, data: {remote: true}) do |f| %>
+    <%= f.label :content, style: "display: block" %>
+    <%= f.rich_text_area :content %>
+    <div class="h-5"></div>
+    <%= f.submit class: "rounded-lg py-3 px-5 bg-green-600 text-white", data: { turbo_frame: :_top } %>
+    <%= button_tag "Close", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-red-600 text-white" %>
+<% end %>

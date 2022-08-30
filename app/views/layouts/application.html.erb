@@ -15,8 +15,8 @@
   <body class="bg-gray-100">
     <%= render 'layouts/header' %>
       <div class="grid h-screen place-items-center">
-        <%= yield %>
         <%= turbo_frame_tag "modal" %>
+        <%= yield %>
       </div>
   </body>
 </html>

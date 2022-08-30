@@ -1,7 +1,5 @@
 <%= turbo_frame_tag "modal" do %>
     <%= tag.div data: { controller: "turbo-modal" }, style: "padding: 30px;" do %>
-        <h1>Posts#new</h1>
-        <p>Find me in app/views/posts/new.html.erb</p>
-        <%= button_tag "Close", data: { action: "turbo-modal#hideModal" }, type: "button", class: "rounded-lg py-3 px-5 bg-red-600 text-white" %>
+        <%= render 'form' %>
     <% end %>
 <% end %>
