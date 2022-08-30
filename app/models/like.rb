@@ -4,5 +4,5 @@ class Like < ApplicationRecord
 
   validates :user_id, uniqueness: { scope: :post_id }
 
-  scope :size_likes_post, ->(post) { where(post: post).size }
+  scope :size_likes_post, ->(post) { where(post:).size }
 end

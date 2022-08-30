@@ -1,7 +1,7 @@
 <div class="w-5"></div>
 <% if user_signed_in? %>
   <%= turbo_frame_tag "like-dislike-#{post.id}" do %>
-    <% unless Like.find_by(user_id: current_user, post_id: post.id) %>
+    <% unless Like.exists?(user_id: current_user.id, post_id: post.id) %>
       <%= link_to likes_path(@post, 'like[post_id]': post.id), data: { 'turbo-method' => :post, turbo_frame: "like-dislike-#{post.id}" } do %>
         <i class="bi bi-hand-thumbs-up" style="font-size: 1.5rem;"></i>
       <% end%>

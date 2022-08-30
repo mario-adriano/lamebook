@@ -1,0 +1,15 @@
+<% posts.each do |post| %>
+    <div id="post" class="shadow-inner bg-white border border-slate-200 rounded-md  divide-y">
+        <div class="space-x-6">
+            <p>
+            <p class="m-1 pb-4"><strong><%= post.username %></strong></p>
+            </p>
+            <p>
+            <%= post.content %>
+            </p>
+        </div>
+        <div class="space-x-6">
+            <%= render 'likes/like', post: post, like_count: Like.size_likes_post(post) %>
+        </div>
+    </div>
+<% end %>
