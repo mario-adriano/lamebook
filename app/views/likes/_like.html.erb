@@ -1,10 +1,20 @@
-<%= turbo_frame_tag "like-dislike-#{post.id}" do %>
-  <% unless current_user.nil? %>
+<div class="w-5"></div>
+<% if user_signed_in? %>
+  <%= turbo_frame_tag "like-dislike-#{post.id}" do %>
     <% unless Like.find_by(user_id: current_user, post_id: post.id) %>
-      <%= link_to "Like", likes_path(@post, 'like[post_id]': post.id), data: { 'turbo-method' => :post, turbo_frame: "like-dislike-#{post.id}" }, class: "preach-btn" %>
+      <%= link_to likes_path(@post, 'like[post_id]': post.id), data: { 'turbo-method' => :post, turbo_frame: "like-dislike-#{post.id}" } do %>
+        <i class="bi bi-hand-thumbs-up" style="font-size: 1.5rem;"></i>
+      <% end%>
     <% else %>
-      <%= link_to "Dislike", like_path(post), data: { 'turbo-method' => :delete }, class: "preached-btn" %>
+      <%= link_to like_path(post), data: { 'turbo-method' => :delete } do %>
+        <i class="bi bi-hand-thumbs-up-fill" style="font-size: 1.5rem;"></i>
+      <% end %>
     <% end %>
+    <%= like_count %>
   <% end %>
+<% else %>
+  <%= link_to new_user_session_path do %>
+    <i class="bi bi-hand-thumbs-up" style="font-size: 1.5rem;"></i>
+  <% end%>
   <%= like_count %>
 <% end %>
