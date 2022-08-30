@@ -5,6 +5,5 @@ class PostsController < ApplicationController
     @posts = Post.all.includes(:user).paginate(page: params[:page]).order('id DESC')
   end
 
-  def new
-  end
+  def new() end
 end

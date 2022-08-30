@@ -16,6 +16,7 @@
     <%= render 'layouts/header' %>
       <div class="grid h-screen place-items-center">
         <%= yield %>
+        <%= turbo_frame_tag "modal" %>
       </div>
   </body>
 </html>
