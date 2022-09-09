@@ -5,15 +5,7 @@ class LikesController < ApplicationController
     post = Post.find_by_id(like_params['post_id'])
     @like = Like.new(user: current_user, post:)
 
-    if @like.save
-      respond_to do |format|
-        if turbo_frame_request? && turbo_frame_request_id == "like-dislike-#{post.id}"
-          format.html { render partial: 'like', locals: { post:, like_count: Like.size_likes_post(post) } }
-        else
-          format.html
-        end
-      end
-    end
+    like_turbo_frame(post) if @like.save
   end
 
   def destroy

@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'posts/index'
   get 'posts/new'
   post 'posts/create'
+  get 'posts/user_posts'
 
   resources :likes, only: %i[create destroy]
 end
