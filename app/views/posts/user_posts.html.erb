@@ -1,0 +1,4 @@
+<div id="posts" class="w-4/12 min-w-full md:min-w-0 space-y-2">
+  <%= render 'posts', posts: @posts %>
+</div>
+<div class="flex justify-center"><%= will_paginate @posts %></div>

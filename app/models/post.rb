@@ -19,5 +19,7 @@ class Post < ApplicationRecord
 
   self.per_page = 20
 
+  validates :content, presence: true
+
   def username = user.username
 end

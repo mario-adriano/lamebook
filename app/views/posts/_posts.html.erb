@@ -2,7 +2,7 @@
     <div id="post" class="shadow-inner bg-white border border-slate-200 rounded-md  divide-y">
         <div class="space-x-6">
             <p>
-            <p class="m-1 pb-4"><strong><%= post.username %></strong></p>
+            <p class="m-1 pb-4"><strong><%= link_to post.username, posts_user_posts_path(user_id: post.user.id) %></strong></p>
             </p>
             <p>
             <%= post.content %>
