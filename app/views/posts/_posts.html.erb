@@ -9,7 +9,7 @@
             </p>
         </div>
         <div class="space-x-6">
-            <%= render 'likes/like', post: post, like_count: Like.size_likes_post(post) %>
+            <%= render 'likes/like', post: post, like_count: post.likes_count, liked: post.liked? %>
         </div>
     </div>
 <% end %>
