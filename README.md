@@ -8,11 +8,11 @@
 
 ## Execução
 
-    Para executar usando docker
+- Para executar usando docker
+  
+  `docker-compose up --build`
+  
+- Para executar o console
 
-    docker-compose up --build
-
-    Para executar o console
-
-    docker-compose run app bundle exec rails c
+  `docker-compose run app bundle exec rails c`
 
