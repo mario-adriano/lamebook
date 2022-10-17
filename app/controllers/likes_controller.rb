@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable Style/Documentation
 class LikesController < ApplicationController
   before_action :authenticate_user!
 
@@ -11,12 +14,13 @@ class LikesController < ApplicationController
   def destroy
     post = Post.find_by_id(id_params)
 
-    if @like = Like.find_by(user: current_user, post:)
+    @like = Like.find_by(user: current_user, post:)
 
-      @like.delete
+    return unless @like
 
-      like_turbo_frame(post)
-    end
+    @like.delete
+
+    like_turbo_frame(post)
   end
 
   private
@@ -31,10 +35,13 @@ class LikesController < ApplicationController
 
   def like_turbo_frame(post)
     respond_to do |format|
-      if turbo_frame_request? && turbo_frame_request_id == "like-dislike-#{post.id}"
-        format.html { render partial: 'like', locals: { post:, like_count: Like.size_likes_post(post) } }
-      else
-        format.html
+      return format.html unless turbo_frame_request? && turbo_frame_request_id == "like-dislike-#{post.id}"
+
+      format.html do
+        render partial: 'like',
+               locals: { post:,
+                         like_count: Like.size_likes_post(post),
+                         liked: Like.exists?(user_id: current_user.id, post_id: post.id) }
       end
     end
   end
